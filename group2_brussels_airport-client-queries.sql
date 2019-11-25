@@ -16,40 +16,41 @@ USE brussels_airport;
 /*-------------------------------------------------------------------------
 	Know, for a specific flight number, how many seats are reserved
 ----------------------------------------------------------------------------*/
-SELECT flight_idFlight as numero_de_vol,COUNT(*) as nombre_de_siege_reservé FROM reserved_seats
-	JOIN bookings ON reserved_seats.reservation_idReservation=bookings.id_bookings
-    GROUP BY flight_idFlight;
+SELECT b.flight_idFlight as numero_de_vol,COUNT(*) as nombre_de_siege_reservé FROM reserved_seats rs
+	JOIN bookings b ON rs.reservation_idReservation=b.id_bookings
+    GROUP BY b.flight_idFlight;
     
  /*-------------------------------------------------------------------------   
 	 	Know, for a specific flight number, the total weight of the luggage
 ----------------------------------------------------------------------------*/
 -- SELECT flight_idFlight FROM bookings;
 -- SELECT SUM(luggage_weight) FROM bookings;
-SELECT flight_idFlight as numero_de_vol,SUM(luggage_weight) as poids_total_baggage FROM bookings
-    GROUP BY flight_idFlight;
+SELECT b.flight_idFlight as numero_de_vol,SUM(luggage_weight) as poids_total_baggage FROM bookings b
+    GROUP BY b.flight_idFlight;
     
 /*-------------------------------------------------------------------------   
 	List the passengers who takes a specific flight
 ----------------------------------------------------------------------------*/ 
-/*SELECT first_name, last_name, id_flight FROM flights 
-	JOIN bookings ON flights.id_flight=bookings.id_bookings
-    JOIN clients ON bookings.id_bookings=clients.id_client;
-    GROUP BY flight_idFlight;*/
-   
+SELECT b.flight_idFlight,c.first_name, c.last_name,c.email,c.phone_number,c.birthdate FROM bookings b
+	JOIN clients c ON c.id_client=b.id_bookings
+    WHERE b.flight_idFlight=1
+    ORDER BY b.flight_idFlight;
 
 /*-------------------------------------------------------------------------   
 	List all flights that land in a certain destination
 ----------------------------------------------------------------------------*/ 
-
-
-
-  
+SELECT d.city as destination, f.id_flight as numero_de_vol,d.flight_time as durée_du_vol,d.distance as distance_km FROM flights f
+	JOIN destination d ON d.id_destination=f.destination_idDestination
+    WHERE destination_idDestination=2
+	ORDER BY f.id_flight;
+    
 /*-------------------------------------------------------------------------   
 	Add at any time a new plane, a new flight or a new destination
 ----------------------------------------------------------------------------*/ 
 -- Insert new flights  
 INSERT INTO flights(take_off_time)
 	VALUES('2200');
+    
 -- Update flights
 UPDATE flights
 	SET plane_idPlane='5',destination_idDestination='5'
@@ -66,7 +67,7 @@ INSERT INTO destination (city,flight_time,distance)
 /*-------------------------------------------------------------------------   
 	Offer the possibility for our passengers to reserve a flight
 ----------------------------------------------------------------------------*/ 
-
+-- Add Number flight,luggage quantity, luggage weight, seats (numb & letter), plane number
 
   
 
