@@ -3,31 +3,27 @@
 -- Brussels airport
 -- programmers : Corentin Dupont
 -- date of creation Lundi 11 novembre 2019
--- date of modification : Mardi 12 novembre 2019
+-- date of modification : Mardi 26 novembre 2019
 -- content : database insertion
 -- ------------------------------------
 
 SHOW DATABASES ;
-DROP DATABASE brussels_airport;
-CREATE DATABASE IF NOT EXISTS brussels_airport;
 USE brussels_airport;
+SET SQL_SAFE_UPDATES=0;
 
--- ------------
--- INSERTION --
--- ------------
-
--- INSERT INTO DESTINATION
+/*____________________________________INSERT INTO DESTINATION___________________________________________*/
 INSERT INTO destination(city,flight_time,distance)
 VALUES('Paris','40','265'),('Barcelona','130','1100'),('Berlin','120','650'),('Venise','110','850');
 
--- INSERT INTO FLIGHTS
-INSERT INTO flights(plane_idPlane,destination_idDestination,take_off_time)
-		VALUES(1,1,636),(2,2,800),(3,1,1024),(4,3,1155),(5,4,1310),(2,2,1820),(4,4,2055);
--- INSERT INTO PLANE
+/*______________________________________INSERT INTO PLANE_______________________________________________*/
 INSERT INTO plane(number_seat)
 		VALUES(30),(30),(30),(36),(36);
-
--- INSERT INTO CLIENTS
+        
+/*______________________________________INSERT INTO FLIGHTS_____________________________________________*/
+INSERT INTO flights(plane_idPlane,destination_idDestination,take_off_time)
+		VALUES(1,1,636),(2,2,800),(3,1,1024),(4,3,1155),(5,4,1310),(2,2,1820),(4,4,2055);
+        
+/*______________________________________INSERT INTO CLIENTS_____________________________________________*/
 INSERT INTO clients(first_name,last_name,email,phone_number,birthdate)
 VALUES('Etienne','Dehucorne','etienne.dehucorne@hotmail.fr','0475678945','1957-12-09'),
 		('Fabrice','Denis','fabrice.denis94@gmail.com','0478965432','1994-09-18'),
@@ -70,7 +66,7 @@ VALUES('Etienne','Dehucorne','etienne.dehucorne@hotmail.fr','0475678945','1957-1
 		('Didier','Marino','didier.marino@hotmail.fr','0478074356','1967-03-25'),
 		('Robin','Collin','robin.collin@outlook.be','0489072674','1953-09-08');
 
--- INSERT INTO SEATS
+/*____________________________________INSERT INTO SEATS___________________________________________*/
 INSERT INTO seats(plane_idPlane,numb,letter)
 VALUES(1,1,'A'),(1,1,'B'),(1,1,'C'),(1,1,'D'),(1,1,'E'),(1,1,'F'),
 		(1,2,'A'),(1,2,'B'),(1,2,'C'),(1,2,'D'),(1,2,'E'),(1,2,'F'),
@@ -107,8 +103,50 @@ VALUES(5,1,'A'),(5,1,'B'),(5,1,'C'),(5,1,'D'),(5,1,'E'),(5,1,'F'),
 		(5,4,'A'),(5,4,'B'),(5,4,'C'),(5,4,'D'),(5,4,'E'),(5,4,'F'),
 		(5,5,'A'),(5,5,'B'),(5,5,'C'),(5,5,'D'),(5,5,'E'),(5,5,'F'),
 		(5,6,'A'),(5,6,'B'),(5,6,'C'),(5,6,'D'),(5,6,'E'),(5,6,'F');
-
--- INSERT INTO RESERVED_SEATS
+        
+/*____________________________________INSERT INTO bookings_________________________________________*/
+INSERT INTO bookings(id_bookings,luggage_quantity,luggage_weight,flight_idFlight,clients_idClient) 
+VALUES(1,2,30,1,1),
+		(2,3,45,1,2),
+        (3,2,30,1,3),
+		(4,1,15,1,4),
+		(5,0,0,1,5),
+		(6,1,15,1,6),
+		(7,2,30,2,7),
+		(8,3,45,2,8),
+		(9,2,30,2,9),
+		(10,1,15,2,10),
+		(11,0,0,2,11),
+		(12,1,15,2,12),
+		(13,2,30,3,13),
+		(14,3,45,3,14),
+		(15,4,60,3,15),
+		(16,3,45,3,16),
+		(17,2,30,3,17),
+		(18,1,15,3,18),
+		(19,0,0,4,19),
+		(20,1,15,4,20),
+		(21,2,30,4,21),
+		(22,3,45,4,22),
+		(23,4,60,4,23),
+		(24,3,45,4,24),
+		(25,2,30,5,25),
+		(26,1,15,5,26),
+		(27,0,0,5,27),
+		(28,1,15,5,28),
+		(29,2,30,5,29),
+		(30,3,45,5,30),
+		(31,4,60,6,31),
+		(32,5,75,6,32),
+		(33,4,60,6,33),
+		(34,3,45,6,34),
+		(35,2,30,6,35),
+		(36,1,15,7,36),
+		(37,0,0,7,37),
+		(38,1,15,7,38),
+		(39,2,30,7,39),
+		(40,3,45,7,40);
+/*____________________________________INSERT INTO RESERVED_SEATS_________________________________________*/
 INSERT INTO reserved_seats(reservation_idReservation,seat_idSeat)
 VALUES(1,1),(1,2),(1,3),
 		(2,4),(2,5),(2,6),
@@ -152,50 +190,12 @@ VALUES(21,97),(21,98),
         (38,106),(38,107),(38,108),
         (39,115),(39,116),
         (40,124),(40,125),(40,126);
-        
--- INSERT INTO  bookings
-INSERT INTO bookings(id_bookings,luggage_quantity,luggage_weight,flight_idFlight,clients_idClient) 
-VALUES(1,2,30,1,1),
-		(2,3,45,1,2),
-        (3,2,30,1,3),
-		(4,1,15,1,4),
-		(5,0,0,1,5),
-		(6,1,15,1,6),
-		(7,2,30,2,7),
-		(8,3,45,2,8),
-		(9,2,30,2,9),
-		(10,1,15,2,10),
-		(11,0,0,2,11),
-		(12,1,15,2,12),
-		(13,2,30,3,13),
-		(14,3,45,3,14),
-		(15,4,60,3,15),
-		(16,3,45,3,16),
-		(17,2,30,3,17),
-		(18,1,15,3,18),
-		(19,0,0,4,19),
-		(20,1,15,4,20),
-		(21,2,30,4,21),
-		(22,3,45,4,22),
-		(23,4,60,4,23),
-		(24,3,45,4,24),
-		(25,2,30,5,25),
-		(26,1,15,5,26),
-		(27,0,0,5,27),
-		(28,1,15,5,28),
-		(29,2,30,5,29),
-		(30,3,45,5,30),
-		(31,4,60,6,31),
-		(32,5,75,6,32),
-		(33,4,60,6,33),
-		(34,3,45,6,34),
-		(35,2,30,6,35),
-		(36,1,15,7,36),
-		(37,0,0,7,37),
-		(38,1,15,7,38),
-		(39,2,30,7,39),
-		(40,3,45,7,40);
+    
+/*____________________________CLEAR TABLE________________________________*/
+DELETE FROM flights;
+ALTER TABLE flights  AUTO_INCREMENT=0;
  
+/*____________________________SELECT * FROM________________________________*/
 SELECT * FROM destination ;
 SELECT * FROM plane ;
 SELECT * FROM clients;
@@ -203,4 +203,5 @@ SELECT * FROM bookings;
 SELECT * FROM flights;
 SELECT * FROM seats;
 SELECT * FROM reserved_seats;
+/*_________________________________________________________________________*/
 SHOW tables ;
