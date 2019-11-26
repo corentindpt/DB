@@ -48,9 +48,9 @@ id_client INT auto_increment primary key,
 first_name VARCHAR(50),
 last_name VARCHAR(50),
 email VARCHAR(50),
-phone_number VARCHAR(50)
+phone_number VARCHAR(50),
+birthdate DATE
 );
-ALTER TABLE clients ADD COLUMN birthdate DATE;
 
 CREATE TABLE bookings
 (
@@ -70,7 +70,7 @@ seat_idSeat INT
 /*_________________________________________________________________________*/
 
 
-/*___________________ADD PRIMARY AND FOREIGN KEYS________________________*/
+/*___________________ADD PRIMARY AND FOREIGN KEYS__________________________*/
 ALTER TABLE flights ADD foreign key (plane_idPlane) references plane(id_plane);
 ALTER TABLE flights ADD foreign key (destination_idDestination) references destination(id_destination) ;
 ALTER TABLE seats ADD foreign key (plane_idPlane) references plane(id_plane);
@@ -80,7 +80,7 @@ ALTER TABLE reserved_seats ADD foreign key (reservation_idReservation) reference
 ALTER TABLE reserved_seats ADD foreign key (seat_idSeat) references seats(id_seat);
 /*_________________________________________________________________________*/
 
-/*____________________________SELECT * FROM_________________________________*/
+/*____________________________SELECT * FROM________________________________*/
 SELECT * FROM destination ;
 SELECT * FROM plane ;
 SELECT * FROM clients;
@@ -88,6 +88,15 @@ SELECT * FROM bookings;
 SELECT * FROM flights;
 SELECT * FROM seats;
 SELECT * FROM reserved_seats;
+/*_________________________________________________________________________*/
+/*____________________________DROP TABLE___________________________________*/
+DROP TABLE destination; 
+DROP TABLE plane; 
+DROP TABLE clients; 
+DROP TABLE bookings; 
+DROP TABLE flights; 
+DROP TABLE seats; 
+DROP TABLE reserved_seats; 
 /*_________________________________________________________________________*/
 
 SHOW tables ;
