@@ -3,7 +3,7 @@
 -- Brussels airport
 -- programmers : Corentin Dupont
 -- date of creation jeudi 21 novembre 2019
--- date of modification : lundi 25 novembre 2019
+-- date of modification : Mardi 03 d√©cembre 2019
 -- content : client queries
 -- ------------------------------------
 SET SQL_SAFE_UPDATES=0;
@@ -50,11 +50,6 @@ SELECT d.city as destination, f.id_flight as numero_de_vol,d.flight_time as dur√
 -- Insert new flights  
 INSERT INTO flights(take_off_time)
 	VALUES('2200');
-    
--- Update flights
-UPDATE flights
-	SET plane_idPlane='5',destination_idDestination='5'
-	WHERE id_flight='8';
 
 -- Insert new plane
 INSERT INTO plane(number_seat)
@@ -63,18 +58,31 @@ INSERT INTO plane(number_seat)
 -- Insert new destination
 INSERT INTO destination (city,flight_time,distance)
 	VALUES ('tokyo','230','350');
+    
+-- Update flights
+UPDATE flights
+	SET plane_idPlane='5',destination_idDestination='5'
+	WHERE id_flight='8';
+/*-------------------------------------------------------------------------   
+	Be able to add new client information (e.g. address)
+----------------------------------------------------------------------------*/   
+ALTER TABLE clients ADD COLUMN address VARCHAR(200);
+-- ALTER TABLE clients DROP COLUMN adress; 			/* misspelling therefore deletion of the column*/
 
 /*-------------------------------------------------------------------------   
 	Offer the possibility for our passengers to reserve a flight
 ----------------------------------------------------------------------------*/ 
--- Add Number flight,luggage quantity, luggage weight, seats (numb & letter), plane number
+-- Add Number flight,luggage quantity, luggage weight 
+INSERT INTO bookings(luggage_quantity,luggage_weight,flight_idFlight,clients_idClient,id_bookings)
+		VALUES(3,50,2,40,41);
+-- Add seats (numb & letter)
 
-  
-
-/*-------------------------------------------------------------------------   
-	Be able to add new client information (e.g. address)
-----------------------------------------------------------------------------*/   
-
+-- Add plane number        
+        
+        
+/*DELETE FROM bookings
+	where id_bookings=43;*/
+/*____________________________SELECT * FROM________________________________*/
 SELECT * FROM destination ;
 SELECT * FROM plane ;
 SELECT * FROM clients;
