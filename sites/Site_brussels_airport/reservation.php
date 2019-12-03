@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -18,17 +19,14 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="index.php">Accueil</a></li>
-                        <li><a href="informations.html">Informations</a></li>
+                       <li><a href="index.php">Accueil</a></li>
+                        <li><a href="informations.php">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
-            <section>
-             
 
-            </section>
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
@@ -57,4 +55,3 @@
         </div>
     </body>
 </html>
-

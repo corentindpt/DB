@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+//Step1
+ $db = mysqli_connect('localhost','root','root','jeux_video_test')
+ or die('Error connecting to MySQL server.');
+?>
+
 <html>
     <head>
         <meta charset="utf-8" />
@@ -20,13 +25,26 @@
                 <nav>
                     <ul>
                         <li><a href="index.php">Accueil</a></li>
-                        <li><a href="informations.html">Informations</a></li>
-                        <li><a href="principal.php">Réservations</a></li>
+                        <li><a href="informations.php">Informations</a></li>
+                        <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
+            <section>
+                <?php
+                //Step2
+                $query = "SELECT * FROM jeux_video";
+                mysqli_query($db, $query) or die('Error querying database.');
 
+                $result = mysqli_query($db, $query);
+                $row = mysqli_fetch_array($result);
+
+                while ($row = mysqli_fetch_array($result)) {
+                 echo $row['nom'] . ' ' . $row['possesseur'] . ': ' . $row['console'] . ' ' . $row['prix'] .'<br />';
+                }
+                ?>
+            </section>
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
@@ -55,3 +73,4 @@
         </div>
     </body>
 </html>
+
