@@ -1,25 +1,4 @@
 <html>
-<?php
-  // Création du DSN
-
-$dsn = 'mysql:host=localhost;dbname=jeux_video_test;port=3306;charset=utf8';
-
-// Création et test de la connexion
-
-try {
- 
-$pdo = new PDO($dsn, 'root' , 'root');
-
-}
-catch (PDOException $exception) {
- 
- mail('fauxmail@votremail.com', 'PDOException', $exception->getMessage());
- exit('Erreur de connexion à la base de données');
- 
-}
-// On récupère tout le contenu de la table jeux_video
-// $reponse = $bdd->query('SELECT * FROM jeux_video');   
-?>
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="mise_en_page.css" />
@@ -39,15 +18,17 @@ catch (PDOException $exception) {
                 
                 <nav>
                     <ul>
-                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="informations.html">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
+            <section>
+             
 
-
+            </section>
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
