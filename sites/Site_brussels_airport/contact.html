@@ -20,7 +20,7 @@
                 <nav>
                     <ul>
                          <li><a href="index.php">Accueil</a></li>
-                        <li><a href="informations.php">Informations</a></li>
+                        <li><a href="informations_1.php">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>

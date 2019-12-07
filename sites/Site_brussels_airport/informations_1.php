@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -19,22 +18,20 @@
                 
                 <nav>
                     <ul>
-                       <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="informations_1.php">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
-            <div class="vertical">
+                <div class="vertical">
                       <p>
-                        <a href="Nouveau_vol.php">Insérer nouveau vol</a>
-                        <a href="nouvel_avion.php">Insérer un nouvel avion</a>
-                        <a href="nouvelle_destination.php">Insérer une nouvelle destination</a>
-                        <a href="mise_a_jour_vol.php">Mettre à jour un vol</a>
-
+                        <a href="Informations.php">Sièges réservés</a>
+                        <a href="informations_baggages.php">Total du poids pour un vol spécifique</a>
+                        <a href="informations_vols.php">Vols</a>
                       </p>
-            </div>
+                </div>
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>

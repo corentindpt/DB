@@ -347,3 +347,19 @@ button {
      entre les étiquettes et les champs texte */
   margin-left: .5em;
 }
+
+.vertical a {
+  color: white;
+  background-color: #000F80;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border: 3px outset #c0c0c0;
+  display: block;
+  width: 200px;
+}
+.vertical a:hover {
+  background-color: #6495ED;
+  border: 3px inset #c0c0c0;
+}

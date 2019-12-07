@@ -1,5 +1,21 @@
-<!DOCTYPE html>
+<?php
+try
+{
+$bdd = new PDO('mysql:host=localhost;dbname=brussels_airport;charset=utf8', 'root', 'root');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+?>
+<?php
+$reponse = $bdd->query('SELECT d.city as destination, f.id_flight as numero_de_vol,d.flight_time as durée_du_vol,d.distance as distance_km FROM flights f
+                            JOIN destination d ON d.id_destination=f.destination_idDestination
+                            ORDER BY f.id_flight');
+?>
+
 <html>
+
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="mise_en_page.css" />
@@ -19,22 +35,36 @@
                 
                 <nav>
                     <ul>
-                       <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="informations_1.php">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
-            <div class="vertical">
-                      <p>
-                        <a href="Nouveau_vol.php">Insérer nouveau vol</a>
-                        <a href="nouvel_avion.php">Insérer un nouvel avion</a>
-                        <a href="nouvelle_destination.php">Insérer une nouvelle destination</a>
-                        <a href="mise_a_jour_vol.php">Mettre à jour un vol</a>
 
-                      </p>
-            </div>
+                <?php     
+                while ($donnees = $reponse->fetch())
+                {
+                ?>
+                    <p>
+                    <strong>Destination </strong> : <?php echo $donnees['destination']; ?><br />
+                    Numéro de vol : <?php echo $donnees['numero_de_vol']; ?><br />
+                    Durée du vol : <?php echo $donnees['durée_du_vol']; ?><br />
+                    Distance du vol : <?php echo $donnees['distance_km']; ?>km<br />
+
+                   </p>
+                <?php
+                }
+
+                ?>
+                   
+
+
+             <p>
+              <a href="Informations_1.php">Retour</a>
+            </p>
+            
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
@@ -63,3 +93,8 @@
         </div>
     </body>
 </html>
+
+<?php
+$query->closeCursor(); // Termine le traitement de la requête
+?>
+

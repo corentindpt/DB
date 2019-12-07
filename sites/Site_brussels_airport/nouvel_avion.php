@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+try
+{
+$bdd = new PDO('mysql:host=localhost;dbname=brussels_airport;charset=utf8', 'root', 'root');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+?>
+
+
 <html>
     <head>
         <meta charset="utf-8" />
@@ -19,22 +30,29 @@
                 
                 <nav>
                     <ul>
-                       <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="informations_1.php">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
-            <div class="vertical">
-                      <p>
-                        <a href="Nouveau_vol.php">Insérer nouveau vol</a>
-                        <a href="nouvel_avion.php">Insérer un nouvel avion</a>
-                        <a href="nouvelle_destination.php">Insérer une nouvelle destination</a>
-                        <a href="mise_a_jour_vol.php">Mettre à jour un vol</a>
+            <p>
 
-                      </p>
-            </div>
+
+                <form action="nouvel_avion2.php" method="post">
+        <p>
+        <label for="number_seat">number_seat</label> : <input type="number" name="nombre_siege" id="nombre_siege" /><br />
+
+        <input type="submit" value="Insérer" />
+    </p>
+    </form>
+        
+
+             <p>
+              <a href="Informations_1.php">Retour</a>
+            </p>
+
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
@@ -63,3 +81,8 @@
         </div>
     </body>
 </html>
+
+<?php
+$query->closeCursor(); // Termine le traitement de la requête
+?>
+

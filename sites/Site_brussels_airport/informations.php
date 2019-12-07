@@ -1,7 +1,18 @@
 <?php
-//Step1
- $db = mysqli_connect('localhost','root','root','jeux_video_test')
- or die('Error connecting to MySQL server.');
+try
+{
+$bdd = new PDO('mysql:host=localhost;dbname=brussels_airport;charset=utf8', 'root', 'root');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+?>
+<?php
+ 
+$reponse = $bdd->query('SELECT b.flight_idFlight as numero_de_vol,COUNT(*) as nombre_de_sieges_reservés FROM reserved_seats rs
+                            JOIN bookings b ON rs.reservation_idReservation=b.id_bookings
+                            GROUP BY b.flight_idFlight');
 ?>
 
 <html>
@@ -25,26 +36,31 @@
                 <nav>
                     <ul>
                         <li><a href="index.php">Accueil</a></li>
-                        <li><a href="informations.php">Informations</a></li>
+                        <li><a href="informations_1.php">Informations</a></li>
                         <li><a href="reservation.php">Réservations</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
-            <section>
+           
                 <?php
-                //Step2
-                $query = "SELECT * FROM jeux_video";
-                mysqli_query($db, $query) or die('Error querying database.');
-
-                $result = mysqli_query($db, $query);
-                $row = mysqli_fetch_array($result);
-
-                while ($row = mysqli_fetch_array($result)) {
-                 echo $row['nom'] . ' ' . $row['possesseur'] . ': ' . $row['console'] . ' ' . $row['prix'] .'<br />';
-                }
+                // On affiche chaque entrée une à une
+                while ($donnees = $reponse->fetch())
+                {
                 ?>
-            </section>
+                    <p>
+                    <strong>Numéro de vol</strong> : <?php echo $donnees['numero_de_vol']; ?><br />
+                    Le nombre de siège reservé est de : <?php echo $donnees['nombre_de_sieges_reservés']; ?><br />
+                   </p>
+                <?php
+                }
+
+                ?>
+                
+             <p>
+              <a href="Informations_1.php">Retour</a>
+            </p>
+
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
@@ -73,4 +89,8 @@
         </div>
     </body>
 </html>
+
+<?php
+$query->closeCursor(); // Termine le traitement de la requête
+?>
 
