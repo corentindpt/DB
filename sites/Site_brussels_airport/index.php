@@ -5,18 +5,18 @@
         <link rel="stylesheet" href="mise_en_page.css" />
         <title>Brussels Airport - L'aéroport du futur</title>
     </head>
-    
+
     <body>
         <div id="bloc_page">
             <header>
                 <div id="titre_principal">
                     <div id="logo">
                         <img src="sites_images_brussels_airport/logo_brussels_airport.jpg" alt="Logo de brussels-airport" />
-                        <h1>Brussels Airport</h1>    
+                        <h1>Brussels Airport</h1>
                     </div>
                     <h2>L'aéroport du futur</h2>
                 </div>
-                
+
                 <nav>
                     <ul>
                          <li><a href="index.php">Accueil</a></li>
@@ -26,14 +26,14 @@
                     </ul>
                 </nav>
             </header>
-            
+
             <div id="banniere_image">
                 <div id="banniere_description">
                     Un aéroport en construction...
                     <a href="#" class="bouton_rouge">Voir l'article <img src="sites_images_brussels_airport/flecheblanchedroite.png" alt="" /></a>
                 </div>
             </div>
-            
+
             <section>
                 <article>
                     <h1><img src="sites_images_brussels_airport/logo_bienvenue.png" alt="Catégorie voyage" class="ico_categorie" /> à l'aéroport de Bruxelles !</h1>
@@ -47,7 +47,7 @@
                     <p><img src="sites_images_brussels_airport/facebook.png" alt="Facebook" /><img src="sites_images_brussels_airport/twitter.png" alt="Twitter" /><img src="sites_images_brussels_airport/vimeo.png" alt="Vimeo" /><img src="sites_images_brussels_airport/flickr.png" alt="Flickr" /><img src="sites_images_brussels_airport/rss.png" alt="RSS" /></p>
                 </aside>
             </section>
-            
+
             <footer>
                 <div id="tweet">
                     <h1>Contacts</h1>
